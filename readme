@@ -1,0 +1,172 @@
+ Medical Chatbot with Health Risk Prediction
+
+A comprehensive medical chatbot tool that uses Large Language Models (LLMs) to analyze symptoms, medical history, and real-time health data to predict diseases like hypertension, diabetes, and cancer.
+
+## Features
+
+- **Intelligent Medical Chatbot**
+  - Powered by advanced LLMs (GPT-4, MedPaLM 2, or BioGPT)
+  - Processes natural language queries about symptoms and health concerns
+  - Provides informative responses with medical context
+  - Maintains conversation history for better context
+
+- **Health Risk Assessment**
+  - Analyzes vital health metrics:
+    - Blood glucose levels
+    - Blood pressure (systolic/diastolic)
+    - Heart rate
+    - BMI
+  - Provides risk scores for various conditions
+  - Offers personalized health recommendations
+
+- **Modern User Interface**
+  - Clean, responsive design
+  - Easy-to-use chat interface
+  - Structured health data input forms
+  - Clear visualization of risk assessments
+  - Mobile-friendly layout
+
+## Technology Stack
+
+### Backend
+- FastAPI (Python web framework)
+- Large Language Models:
+  - GPT-4 (OpenAI)
+  - MedPaLM 2 (Google)
+  - BioGPT (Microsoft)
+- Machine Learning Models for risk prediction
+- Python libraries:
+  - scikit-learn
+  - numpy
+  - pandas
+
+### Frontend
+- HTML5
+- CSS3 (Modern, responsive design)
+- JavaScript (ES6+)
+- Fetch API for backend communication
+
+## Setup Instructions
+
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd medical-chatbot
+   ```
+
+2. **Backend Setup**
+   ```bash
+   # Create a virtual environment
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+   # Install dependencies
+   cd backend
+   pip install -r requirements.txt
+   
+   # Set up environment variables
+   cp .env.example .env
+   # Edit .env with your API keys and configuration
+   ```
+
+3. **Frontend Setup**
+   ```bash
+   # No additional setup required for frontend
+   # Just serve the files using any static file server
+   ```
+
+4. **Start the Application**
+   ```bash
+   # Start the backend server
+   cd backend
+   python -m uvicorn main:app --reload
+   
+   # Serve the frontend
+   # You can use any static file server, for example:
+   python -m http.server 8080
+   ```
+
+5. **Access the Application**
+   - Open your browser and navigate to:
+     - Frontend: http://localhost:8080
+     - Backend API docs: http://localhost:8000/docs
+
+## Usage Guidelines
+
+1. **Chat Interface**
+   - Type your medical questions or concerns in the chat input
+   - The chatbot will respond with relevant medical information
+   - Remember that the chatbot is not a replacement for professional medical advice
+
+2. **Health Risk Assessment**
+   - Navigate to the Health Data tab
+   - Fill in your health metrics:
+     - Blood glucose levels
+     - Blood pressure readings
+     - Heart rate
+     - Age and BMI
+   - Submit the form to receive risk assessments
+   - Review the predictions and recommendations
+
+## API Documentation
+
+### Chat Endpoint
+- **POST** `/chat`
+  ```json
+  {
+    "message": "string",
+    "context": {
+      "health_metrics": {},
+      "medical_history": []
+    }
+  }
+  ```
+
+### Health Risk Prediction Endpoint
+- **POST** `/health`
+  ```json
+  {
+    "blood_glucose": "float",
+    "systolic_bp": "float",
+    "diastolic_bp": "float",
+    "heart_rate": "float",
+    "age": "integer",
+    "bmi": "float",
+    "medical_history": ["string"]
+  }
+  ```
+
+## Security Considerations
+
+- The application includes basic security measures but should be enhanced for production use
+- API keys and sensitive data should be properly secured
+- User data should be handled according to medical privacy regulations
+- Additional authentication and authorization should be implemented for production
+
+## Limitations
+
+- The chatbot provides general medical information only
+- Not a replacement for professional medical diagnosis or treatment
+- Risk predictions are based on simplified models and should be validated by healthcare professionals
+- Accuracy depends on the quality of input data
+
+## Future Enhancements
+
+- Integration with electronic health records
+- Support for more health metrics and conditions
+- Enhanced ML models for better prediction accuracy
+- Real-time health data integration (wearables, IoT devices)
+- Multi-language support
+- Voice interface for accessibility
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit pull requests or open issues for improvements.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Disclaimer
+
+This tool is for informational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of qualified healthcare providers with questions regarding medical conditions.
